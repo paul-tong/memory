@@ -27,7 +27,7 @@ class Board extends React.Component {
     );
   }
 
-  render() {
+  render() { // render cards on the board
     return (
       <div>
         <div className="board-row">
@@ -64,13 +64,13 @@ class Board extends React.Component {
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    const cardsValue = getCardsValue();
+    const cardsValue = getCardsValue(); // get random order of cards' value
     this.state = {
-      clickNumber: 0,
-      preCard: null,
-      cardsValue: cardsValue,
-      cardsStatus: Array(16).fill('hide'),
-      isPaused: false,
+      clickNumber: 0, // number of clicked
+      preCard: null, // number of previous clicked card
+      cardsValue: cardsValue, // cards' value
+      cardsStatus: Array(16).fill('hide'), // cards' status
+      isPaused: false, // whether in the delay process
     };
   }
 
@@ -80,9 +80,9 @@ class Game extends React.Component {
     let cardsStatus = this.state.cardsStatus.slice();
     let preCard = this.state.preCard;
     
-    // click effect only when this card is hide previously
+    // click effect only when this card is hiden previously
     if (cardsStatus[i] === 'hide') {
-      cardsStatus[i] = 'open'; // open it anyway
+      cardsStatus[i] = 'open'; // open the card
       if (preCard === null) { // is the first clicked card
         this.setState({
           cardsStatus: cardsStatus,
@@ -118,7 +118,7 @@ class Game extends React.Component {
     }        
     preCard = null;
     
-    setTimeout(function() { 
+    setTimeout(function() { // set state after one second
       this.setState({  
         preCard: preCard,
         cardsStatus: cardsStatus,
@@ -140,7 +140,7 @@ class Game extends React.Component {
   
   render() {
     let message;
-    if(checkWin(this.state.cardsStatus)){
+    if(checkWin(this.state.cardsStatus)){ // check whether all cards are removed
       alert("You Win! Steps: " + this.state.clickNumber);
       message = 'clicks: ' + 0;      
       this.restart();
@@ -166,15 +166,6 @@ class Game extends React.Component {
     );
   }
 }
-
-// ========================================
-// render the game component to DOM
-/*ReactDOM.render(
-  <Game />,
-  document.getElementById('game')
-);*/
-
-
 
 
 // ==============================================================
@@ -205,3 +196,4 @@ function checkWin(cardsStatus) {
   return true;
 }
 
+// attribution: https://reactjs.org/tutorial
