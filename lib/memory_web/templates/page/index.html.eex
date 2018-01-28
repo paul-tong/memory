@@ -1,8 +1,15 @@
-<h1>Memory Game</h1>
-
-<div id="game">
-  Loading...
-</div>
-
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>memory game</title> 
+  </head>
+  <body>
+    <div class="header">
+      <h1 id="title">Memory Game</h1>
+    </div>
+    <div id="game">
+    Loading...
+    </div>
+  </body>
+</html>
 
